@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poxly</title>
-    <link rel="stylesheet" href="static\css\styles.css">
-    <link rel="icon" type="image/x-icon" href="../images/icons/poxly_favicon.png">
+    <!-- Corrected link to the CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/icons/poxly_favicon.png') }}">
 </head>
 <body>
-    <body>
     <div class="main-container">
         <!-- Sidebar -->
         <nav class="sidebar">
@@ -21,20 +21,20 @@
                         <span id="seconds" class="smallest"></span>
                     </div>
                 </li>
-                <li><a href="index.html"><img src="static\images\icons\home.svg" class="sidebarIcons"></a></li>
-                <li><a href="data.html"><img src="static\images\icons\scan.png" class="sidebarIcons"></a></li>
-                <li><a href="entires.html" class="active"><img src="static\images\icons\entries.png" class="sidebarIcons"></a></li>
-                <li><a href="about.html" class="active"><img src="static\images\icons\about.svg" class="sidebarIcons"></a></li>
-            
+                <!-- Corrected links using url_for -->
+                <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/icons/home.svg') }}" class="sidebarIcons"></a></li>
+                <li><a href="{{ url_for('data') }}"><img src="{{ url_for('static', filename='images/icons/scan.png') }}" class="sidebarIcons"></a></li>
+                <li><a href="{{ url_for('entries') }}" class="active"><img src="{{ url_for('static', filename='images/icons/entries.png') }}" class="sidebarIcons"></a></li>
+                <li><a href="{{ url_for('about') }}" class="active"><img src="{{ url_for('static', filename='images/icons/about.svg') }}" class="sidebarIcons"></a></li>
             </ul>
         </nav>
 
         <!-- Main Content -->
         <div class="content">
             <header class="header">
-                <img src="../images/POXLY.png" alt="Poxly Logo" class="poxlyLogo">
+                <img src="{{ url_for('static', filename='images/POXLY.png') }}" alt="Poxly Logo" class="poxlyLogo">
                 <p class="subtitle">A pox detection app.</p>
-                <a href="data.html" class="cta-button">Start scanning</a>
+                <a href="{{ url_for('data') }}" class="cta-button">Start scanning</a>
             </header>
 
             <section id="features" class="features">
@@ -58,10 +58,14 @@
             </section>
 
             <footer class="footer">
-                <p>&copy; 2024 Kelompok 7. All rights reserved.</p>
+                <div class="container">
+                    <p>&copy; 2024 Kelompok 7. All rights reserved.</p>
+                </div>
             </footer>
         </div>
     </div>
-</body>
+
+    <!-- Corrected the link to the JavaScript file -->
+    <script src="{{ url_for('static', filename='js/landing.js') }}"></script>
 </body>
 </html>

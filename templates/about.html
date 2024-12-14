@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poxly</title>
-    <link rel="stylesheet" href="static\css\styles.css">
+    <!-- Use url_for to link to the static assets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 
-    <link rel="icon" type="image/x-icon" href="../images/icons/poxly_favicon.png">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/icons/poxly_favicon.png') }}">
 </head>
 <body>
     <div class="main-container">
@@ -21,10 +22,11 @@
                         <span id="seconds" class="smallest"></span>
                     </div>
                 </li>
-                <li><a href="index.html"><img src="static\images\icons\home.svg" class="sidebarIcons"></a></li>
-                <li><a href="data.html"><img src="static\images\icons\scan.png" class="sidebarIcons"></a></li>
-                <li><a href="entires.html" class="active"><img src="static\images\icons\entries.png" class="sidebarIcons"></a></li>
-                <li><a href="about.html" class="active"><img src="static\images\icons\about.svg" class="sidebarIcons"></a></li>
+                <!-- Updated image paths using url_for -->
+                <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/icons/home.svg') }}" class="sidebarIcons"></a></li>
+                <li><a href="{{ url_for('data') }}"><img src="{{ url_for('static', filename='images/icons/scan.png') }}" class="sidebarIcons"></a></li>
+                <li><a href="{{ url_for('entries') }}" class="active"><img src="{{ url_for('static', filename='images/icons/entries.png') }}" class="sidebarIcons"></a></li>
+                <li><a href="{{ url_for('about') }}" class="active"><img src="{{ url_for('static', filename='images/icons/about.svg') }}" class="sidebarIcons"></a></li>
             </ul>
         </nav>
 
@@ -34,7 +36,8 @@
                 <div class="container">
                     <div class="container-sideways">
                         <h1 class="title">About</h1>
-                        <img src="../images/POXLY.png" height="60px" class="poxlyLogo_side">
+                        <!-- Use url_for to link images -->
+                        <img src="{{ url_for('static', filename='images/POXLY.png') }}" height="60px" class="poxlyLogo_side">
                     </div>
                     <p class="subtitle">Learn more about our mission and how we work.</p>
                 </div>
@@ -64,6 +67,8 @@
             </footer>
         </div>
     </div>
-    <script src="../about/about.js"></script>
+
+    <!-- Use url_for for JavaScript as well -->
+    <script src="{{ url_for('static', filename='js/about.js') }}"></script>
 </body>
 </html>

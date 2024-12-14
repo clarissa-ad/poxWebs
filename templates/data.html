@@ -4,26 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poxly</title>
-    <link rel="stylesheet" href="static\css\styles.css">
-
-    <link rel="icon" type="image/x-icon" href="../images/icons/poxly_favicon.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/icons/poxly_favicon.png') }}">
 </head>
-<style>
-    .imagePreviews {
-        margin: 2rem;
-    }
-
-    /* Ensure submit button is hidden initially */
-    #submitBtn {
-        display: none;
-    }
-</style>
 <body>
     <div class="main-container">
         <!-- Sidebar -->
         <nav class="sidebar">
             <ul class="sidebar-menu">
-                <div id="changing-text" class="fade"></div>
+                <div id="changing-text" class="fade">Time</div>
                 <li>
                     <div id="vertical-clock" class="clock">
                         <span id="hours" class="largest"></span>
@@ -31,10 +20,10 @@
                         <span id="seconds" class="smallest"></span>
                     </div>
                 </li>
-                <li><a href="index.html"><img src="images\icons\home.svg" class="sidebarIcons"></a></li>
-                <li><a href="data.html"><img src="images\icons\scan.png" class="sidebarIcons"></a></li>
-                <li><a href="entires.html" class="active"><img src="static\images\icons\entries.png" class="sidebarIcons"></a></li>
-                <li><a href="about.html" class="active"><img src="static\images\icons\about.svg" class="sidebarIcons"></a></li>
+                <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/icons/home.svg') }}" class="sidebarIcons"></a></li>
+                <li><a href="{{ url_for('data') }}"><img src="{{ url_for('static', filename='images/icons/scan.png') }}" class="sidebarIcons"></a></li>
+                <li><a href="{{ url_for('entries') }}" class="active"><img src="{{ url_for('static', filename='images/icons/entries.png') }}" class="sidebarIcons"></a></li>
+                <li><a href="{{ url_for('about') }}" class="active"><img src="{{ url_for('static', filename='images/icons/about.svg') }}" class="sidebarIcons"></a></li>
             </ul>
         </nav>
 
@@ -63,10 +52,10 @@
                     </div>
 
                     <!-- Submit Button, initially hidden -->
-                    <form id="submitForm" action="/predict" method="POST" enctype="multipart/form-data">
+                    <form id="submitForm" action="{{ url_for('predict') }}" method="POST" enctype="multipart/form-data">
                         <input type="file" id="fileInput" name="file" accept="image/*" style="display:none;" />
                         <button id="submitBtn" class="submit-button" type="submit">Submit Image</button>
-                    </form>
+                    </form>                    
                 </div>
             </section>
 
@@ -78,6 +67,7 @@
         </div>
     </div>
 
-    <script src="../data/data.js"></script>
+    <!-- Link to your JavaScript file -->
+    <script src="{{ url_for('static', filename='js/data.js') }}"></script>
 </body>
 </html>
